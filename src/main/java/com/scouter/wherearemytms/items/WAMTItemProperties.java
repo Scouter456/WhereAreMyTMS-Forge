@@ -3,8 +3,10 @@ package com.scouter.wherearemytms.items;
 import com.scouter.wherearemytms.WhereAreMyTMs;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,8 +36,8 @@ public class WAMTItemProperties {
         types.put("dark", "Dark");
         types.put("steel", "Steel");
         types.put("fairy", "Fairy");
-        for (Item item : Registry.ITEM) {
-            if (Registry.ITEM.getKey(item).getNamespace().equals(WhereAreMyTMs.MODID))
+        for (Item item : ForgeRegistries.ITEMS) {
+            if (ForgeRegistries.ITEMS.getKey(item).getNamespace().equals(WhereAreMyTMs.MODID))
                 if (item instanceof BasePokemonTM) {
                     for (Map.Entry<String, String> entry : types.entrySet()) {
                         ItemProperties.register(item, prefix(entry.getKey()), (itemStack, clientWorld, livingEntity, seed) -> {
